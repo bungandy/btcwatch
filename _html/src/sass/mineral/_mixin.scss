@@ -1,0 +1,142 @@
+/* MIXIN KEYFRAMES
+-------------------------------------------- */
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content; 
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    } 
+}
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+}
+
+/* MIXIN BUTTON
+-------------------------------------------- */
+@mixin btncolor($color, $background, $border, $width) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+    border-width: $width;
+
+    &:hover {
+        color: $color;
+        background-color: darken($background, 5%);
+        border-color: darken($border, 5%);
+    }
+
+    &:focus{
+        color: $color;
+        background-color: darken($background, 10%);
+        border-color: darken($border, 10%);
+    }
+
+    &:active{
+        color: $color;
+        background-color: darken($background, 12%);
+        border-color: darken($border, 12%);
+    }
+
+    &.disabled,
+    &[disabled]{
+        &:hover,
+        &:focus,
+        &:active {
+            
+        }
+    }
+}
+
+@mixin btncoloralt($color, $background, $border, $width) {
+    color: $color;
+    background-color: transparent;
+    border-color: $border;
+    border-width: $width;
+
+    &:hover {
+        color: $background;
+        background-color: $color;
+        border-color: transparent;
+    }
+
+    &:focus{
+        color: $background;
+        background-color: $color;
+        border-color: transparent;
+    }
+
+    &:active{
+        color: $background;
+        background-color: $color;
+        border-color: transparent;
+    }
+}
+
+
+@mixin timer($item, $duration, $size, $color, $hover: running) {
+  #{$item}, #{$item} * {
+    @include box-sizing(border-box);
+    }
+
+  #{$item} { 
+    width: $size;
+    height: $size;
+  }
+
+  #{$item} .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: $color;
+  }
+
+  #{$item} .spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    animation: rota $duration + s linear infinite;
+  }
+
+  #{$item}:hover .spinner,
+  #{$item}:hover .filler, 
+  #{$item}:hover .mask {
+    animation-play-state: $hover;    
+  }
+
+  #{$item} .filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0; 
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    animation: opa $duration + s steps(1,end) infinite reverse;
+    border-left: none;
+  }
+
+  #{$item} .mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa $duration + s steps(1,end) infinite;
+  }
+
+  @keyframes rota {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes opa {
+    0% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+}

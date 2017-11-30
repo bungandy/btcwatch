@@ -1,0 +1,130 @@
+@import "compass/reset";
+@import "compass/layout";
+@import "compass/css3";
+@import "mineral/mineral";
+
+
+/* GLOBAL
+-------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+html, body{
+	width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: #013243;
+    color: #fff;
+}
+html{
+    position: relative;
+}
+body{
+    overflow-x: hidden;
+    display: table;
+    font-family: 'Roboto Mono', monospace;
+}
+body, input, textarea, select, button {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+}
+*{
+	-webkit-overflow-scrolling: touch;
+}
+
+/* HEADER
+-------------------------------------------- */
+#header{
+     
+}
+
+/* FOOTER
+-------------------------------------------- */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 30px;
+    text-align: center;
+
+    a{
+    	color: #fff;
+    }
+}
+
+/* CONTENT
+-------------------------------------------- */
+#app{
+    &.watchpanel{
+    	display: table-cell;
+    	vertical-align: middle;
+    	text-align: center;
+
+    	.timer-pos{
+    		position: fixed;
+    		top: 40px;
+    		right: 40px;
+    	}
+
+    	.timer {
+			position: relative;
+			background: #013243;
+			width: 20px;
+			height: 20px;
+			// @include border-radius(10px);
+			overflow: hidden;
+		}
+
+    	@include timer('.timer', 10, 20px, #fff);
+
+    	.current{
+    		font-size: 48px;
+    		margin: 0;
+
+    		@media(min-width:568px){
+				font-size: 60px;
+			}
+			@media(min-width:736px){
+				font-size: 80px;
+			}
+			@media(min-width:1024px){
+				font-size: 100px;
+			}
+    	}
+
+    	.info{
+    		margin-top: 30px;
+
+    		> [class*='col-']{
+	    		border-top: 1px solid rgba(255,255,255,0.2);
+	    		padding-top: 15px;
+
+	    		> span{
+	    			display: block;
+	    			font-size: 16px;
+
+	    			@media(min-width:568px){
+	    				font-size: 18px;
+	    			}
+	    			@media(min-width:736px){
+	    				font-size: 28px;
+	    			}
+	    			@media(min-width:1024px){
+	    				font-size: 38px;
+	    			}
+
+	    			&.percent{
+	    				&.up{
+	    					color: #3fc380;
+	    				}
+	    				&.down{
+	    					color: #e74c3c;
+	    				}
+	    			}
+	    		}
+	    	}
+    	}
+    }
+}

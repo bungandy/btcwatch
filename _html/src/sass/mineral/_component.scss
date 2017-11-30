@@ -1,0 +1,39 @@
+/* COMPONENTS
+   Basically all elements that reused or categorized as module
+-------------------------------------------- */
+.hamburger{
+    @extend .hamburger--squeeze;
+    outline: none;
+    display: none;
+    float: right;
+
+    @media(max-width:$ipad - 1px){
+        display: inline-block;
+    }
+}
+.btn{
+    @include transition(all .2s ease-in-out);
+
+    @media(min-width:$ipad){
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+.btn-narrow{
+    @media(min-width:$ipad){
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+.btn-primary{
+    @include btncolor(#fff, $brand-primary, $brand-primary, 1px)
+}
+.btn-primary-alt{
+    @include btncoloralt($brand-primary, #fff, $brand-primary, 1px);
+}
+.btn-twitter{
+    @include btncolor(#fff, $twitter, darken($twitter,5%), 1px);
+}
+.btn-facebook{
+    @include btncolor(#fff, $facebook, darken($facebook,5%), 1px);
+}
