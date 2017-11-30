@@ -31,12 +31,11 @@
 import axios from 'axios';
 import numeral from 'numeral';
 
-// var url = 'https://swapi.co/api/people/1/';
 var url = 'https://vip.bitcoin.co.id/api/btc_idr/ticker';
 
 export default {
   name: 'WatchPanel',
-  data () {
+  data: function () {
     return {
       pricenow : null,
       pricelow : null,
@@ -45,23 +44,18 @@ export default {
     }
   },
   methods: {
-    loadData: function(){
+    loadData: function () {
       var self = this;
 
       axios.get(url)
       .then(function(response){
         var content = response.data.ticker;
-        // this.posts = response.content
         // console.log(content);
         self.pricenow   = numeral(content.last).format('0,0');
         self.pricelow   = numeral(content.low).format('0,0');
         self.pricehigh  = numeral(content.high).format('0,0');
         self.pricepercent = numeral( ( ( (content.last/ content.low) *100 ) -100) /100 ).format('0.00%');
-
-      })
-      .catch(function(e){
-        // this.errors.push(e)
-        // console.log(e)
+        document.title = self.pricenow + ' - ' + self.pricepercent;
       })
     }
   },
@@ -70,7 +64,7 @@ export default {
 
     setInterval(function () {
       this.loadData();
-    }.bind(this), 10000); 
+    }.bind(this), 10000);
   }
 }
 </script>

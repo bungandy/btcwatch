@@ -22,7 +22,15 @@ export default {
     WatchPanel
   }
 }
+
+//GA
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-110463180-1');
 </script>
 
-<style>
+<style scoped>
+
 </style>

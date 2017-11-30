@@ -2,7 +2,7 @@
   "name": "btcwatch",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Andy <andy@mineral.co.id>",
+  "author": "Andy Christiawan <bungandy@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "fs": "0.0.1-security",
+    "net": "^1.0.2",
     "numeral": "^2.0.6",
+    "tls": "0.0.1",
     "vue": "^2.5.2"
   },
   "devDependencies": {
