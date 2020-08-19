@@ -8,6 +8,7 @@
       </div>
     </div>
     <div class="container">
+      <h2 class="btc">1 BTC</h2> 
       <h1 class="current">{{ pricenow }}</h1>
       <div class="row info">
         <div class="col-xs-5 col-sm-4">
@@ -31,7 +32,7 @@
 import axios from 'axios';
 import numeral from 'numeral';
 
-var url = 'https://vip.bitcoin.co.id/api/btc_idr/ticker';
+var apiUrl = 'https://vip.bitcoin.co.id/api/btc_idr/ticker';
 
 export default {
   name: 'WatchPanel',
@@ -47,7 +48,7 @@ export default {
     loadData: function () {
       var self = this;
 
-      axios.get(url)
+      axios.get(apiUrl)
       .then(function(response){
         var content = response.data.ticker;
         // console.log(content);
